@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-
-@include('admin.includes.errors')
-    <div class="card mt-3">
+    @include('admin.includes.inputserrors')
+    <div class="card my-3">
         <div class="card-header">
             Create a new category
         </div>

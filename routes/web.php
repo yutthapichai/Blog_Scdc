@@ -24,11 +24,19 @@ Route::group(['prefix' => 'admin','middleware' => 'auth'], function(){
 
     Route::get('/post/create', 'PostsController@create')->name('post.create');
 
-    Route::post('/post/store',[
-        'uses' => 'PostsController@store',
-        'as' => 'post.store'
-    ]);
+    // Posts
+    Route::post('/post/store', 'PostsController@store')->name('post.store');
 
+    Route::get('/posts', 'PostsController@index')->name('posts');
+
+    Route::get('/posts/edit/{id}', 'PostsController@edit')->name('post.edit');
+    // fetch data trash
+    Route::get('/posts/trashed', 'PostsController@trashed')->name('posts.trashed');
+
+    Route::get('/posts/delete/{id}', 'PostsController@destroy')->name('post.delete');
+
+    Route::get('/posts/kill/{id}', 'PostsController@kill')->name('post.kill');
+    // Categories
     Route::get('/category/create',[
         'uses' => 'CategoriesController@create',
         'as' => 'category.create'

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('admin.includes.errors')
+    @include('admin.includes.inputserrors')
     <div class="card bg-dark text-white mt-3">
         <div class="card-body">
             <div class="card-title">

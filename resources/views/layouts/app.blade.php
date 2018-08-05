@@ -12,7 +12,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
@@ -35,7 +34,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        <li><a class="nav-link" href="{{route('categories')}}">Category</a></li>
+                        
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -79,17 +78,23 @@
                         <a href="{{route('home')}}" class="list-group-item list-group-item-action list-group-item-dark"><i data-feather="home"></i> Home</a>                     
                         <a href="{{route('category.create')}}" class="list-group-item list-group-item-action list-group-item-dark"><i data-feather="aperture"></i> Create a category</a>            
                         <a href="{{route('post.create')}}" class="list-group-item list-group-item-action list-group-item-dark"><i data-feather="send"></i> Cteate a post</a>
+                        <a class="list-group-item list-group-item-action list-group-item-dark" href="{{route('categories')}}"><i data-feather="package"></i> Category</a>
+                        <a class="list-group-item list-group-item-action list-group-item-dark" href="{{route('posts')}}"><i data-feather="message-square"></i> All posts</a>
+                        <a class="list-group-item list-group-item-action list-group-item-dark" href="{{route('posts.trashed')}}"><i data-feather="trash-2"></i> All trashed posts</a>
                     </div>
                 </div>
+                @else
+                <div class="col-lg-3 text-center"><h1 class="py-5">Yutth Programmer<br>Hello world</h1></div>
                 @endif
                 <main class="col-lg-9">
+                    @include('admin.includes.sessionerrors')
                     @yield('content')
                 </main>
             </div>
         </div>
     </div>
     <script>
-      feather.replace()
+        feather.replace();
     </script>
 </body>
 </html>
