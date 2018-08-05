@@ -1,6 +1,6 @@
-@if(Session::has('store'))
+@if(Session::has('success'))
     <div class="alert alert-success mt-3" role="alert">
-        {{ Session::get('store')}}
+        {{ Session::get('success')}}
     </div>
 @elseif(Session::has('update'))
     <div class="alert alert-info mt-3" role="alert">

@@ -30,12 +30,16 @@ Route::group(['prefix' => 'admin','middleware' => 'auth'], function(){
     Route::get('/posts', 'PostsController@index')->name('posts');
 
     Route::get('/posts/edit/{id}', 'PostsController@edit')->name('post.edit');
+
+    Route::post('/post/update/{id}', 'PostsController@update')->name('post.update');
     // fetch data trash
     Route::get('/posts/trashed', 'PostsController@trashed')->name('posts.trashed');
 
     Route::get('/posts/delete/{id}', 'PostsController@destroy')->name('post.delete');
 
     Route::get('/posts/kill/{id}', 'PostsController@kill')->name('post.kill');
+
+    Route::get('/posts/restore/{id}', 'PostsController@restore')->name('post.restore');
     // Categories
     Route::get('/category/create',[
         'uses' => 'CategoriesController@create',
