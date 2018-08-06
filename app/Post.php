@@ -19,12 +19,12 @@ class Post extends Model
 
     public function category()
     {
-        return $this->belongTo('App\category');
+        return $this->belongsTo('App\Category');
     }
 
     public function tags()
     {
-        return $this->belongTo('App\Tag');
+        return $this->belongsToMany('App\Tag');
     }
 
     public function getFeaturedAttribute($featured)

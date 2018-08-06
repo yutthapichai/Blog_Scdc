@@ -63,7 +63,7 @@ class PostsController extends Controller
             'slug' => str_slug($request->title)
         ]);
         //Model Post's tags() the same loop for then insert
-        $post->tage()->attach($request->tags);
+        $post->tags()->attach($request->tags);
         Session::flash('success', 'Post create succesfully');
         return redirect()->back();
     }
@@ -88,7 +88,9 @@ class PostsController extends Controller
     public function edit($id)
     {
         $post = Post::find($id);
-        return view('admin.posts.edit')->with('post',$post)->with('categories',Category::all());
+        return view('admin.posts.edit')->with('post',$post)
+                                       ->with('categories',Category::all())
+                                       ->with('tags', Tag::all());
     }
 
     /**
@@ -117,6 +119,8 @@ class PostsController extends Controller
         $post->content = $request->content;
         $post->category_id = $request->category_id;
         $post->save();
+        //Model Post's tags() the same loop for then update
+        $post->tags()->sync($request->tags);
         Session::flash('update', 'The post was updated!!');
         return redirect()->route('posts');
 
@@ -147,7 +151,7 @@ class PostsController extends Controller
     {
         $post = Post::withTrashed()->where('id', $id)->first();
         $post->forceDelete();
-        Session::flash('delte', 'Deleted permanently');
+        Session::flash('delete', 'Deleted permanently');
         return redirect()->back();
 
     }
