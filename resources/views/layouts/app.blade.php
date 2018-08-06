@@ -15,7 +15,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-    
+
     <script src="https://unpkg.com/feather-icons"></script>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -34,7 +34,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -75,16 +75,43 @@
                 @if(Auth::check())
                 <div class="col-lg-3">
                     <div class="list-group mt-3">
-                        <a href="{{route('home')}}" class="list-group-item list-group-item-action list-group-item-dark"><i data-feather="home"></i> Home</a>                     
-                        <a href="{{route('category.create')}}" class="list-group-item list-group-item-action list-group-item-dark"><i data-feather="aperture"></i> Create a category</a>            
-                        <a href="{{route('post.create')}}" class="list-group-item list-group-item-action list-group-item-dark"><i data-feather="send"></i> Cteate a post</a>
-                        <a class="list-group-item list-group-item-action list-group-item-dark" href="{{route('categories')}}"><i data-feather="package"></i> Category</a>
-                        <a class="list-group-item list-group-item-action list-group-item-dark" href="{{route('posts')}}"><i data-feather="message-square"></i> All posts</a>
-                        <a class="list-group-item list-group-item-action list-group-item-dark" href="{{route('posts.trashed')}}"><i data-feather="trash-2"></i> All trashed posts</a>
+                        <a href="{{route('home')}}"
+                        class="list-group-item list-group-item-action list-group-item-dark">
+                        <i data-feather="home"></i> Home</a>
+
+                        <a href="{{route('category.create')}}"
+                        class="list-group-item list-group-item-action list-group-item-dark">
+                        <i data-feather="aperture"></i> Create a category</a>
+
+                        <a href="{{route('post.create')}}"
+                        class="list-group-item list-group-item-action list-group-item-dark">
+                        <i data-feather="send"></i> Cteate a post</a>
+
+                        <a class="list-group-item list-group-item-action list-group-item-dark"
+                        href="{{route('tag.create')}}">
+                        <i data-feather="tag"></i> Create Tag</a>
+
+                        <a class="list-group-item list-group-item-action list-group-item-dark"
+                        href="{{route('categories')}}">
+                        <i data-feather="package"></i> All Category</a>
+
+                        <a class="list-group-item list-group-item-action list-group-item-dark"
+                        href="{{route('posts')}}">
+                        <i data-feather="message-square"></i> All Posts</a>
+
+                        <a class="list-group-item list-group-item-action list-group-item-dark"
+                        href="{{route('posts.trashed')}}">
+                        <i data-feather="trash-2"></i> All trashed posts</a>
+
+                        <a class="list-group-item list-group-item-action list-group-item-dark"
+                        href="{{route('tags')}}">
+                        <i data-feather="bookmark"></i> All Tag</a>
                     </div>
                 </div>
                 @else
-                <div class="col-lg-3 text-center"><h1 class="py-5">Yutth Programmer<br>Hello world</h1></div>
+                <div class="col-lg-1">
+
+                </div>
                 @endif
                 <main class="col-lg-9">
                     @include('admin.includes.sessionerrors')

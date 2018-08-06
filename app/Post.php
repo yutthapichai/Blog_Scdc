@@ -16,10 +16,15 @@ class Post extends Model
 
     // Delete no true
     protected $dates = ['deleted_at'];
-    
+
     public function category()
     {
         return $this->belongTo('App\category');
+    }
+
+    public function tags()
+    {
+        return $this->belongTo('App\Tag');
     }
 
     public function getFeaturedAttribute($featured)

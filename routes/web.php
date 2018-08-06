@@ -22,9 +22,22 @@ Route::group(['prefix' => 'admin','middleware' => 'auth'], function(){
 
     Route::get('/home', 'HomeController@index')->name('home');
 
-    Route::get('/post/create', 'PostsController@create')->name('post.create');
+    //Tag
+    Route::get('/tags', 'TagsController@index')->name('tags');
+
+    Route::get('/tag/create', 'TagsController@create')->name('tag.create');
+
+    Route::post('/tag/store', 'TagsController@store')->name('tag.store');
+
+    Route::get('/tag/edit/{id}', 'TagsController@edit')->name('tag.edit');
+
+    Route::post('/tag/update/{id}', 'TagsController@update')->name('tag.update');
+
+    Route::get('/tag/delete/{id}', 'TagsController@destroy')->name('tag.delete');
 
     // Posts
+    Route::get('/post/create', 'PostsController@create')->name('post.create');
+
     Route::post('/post/store', 'PostsController@store')->name('post.store');
 
     Route::get('/posts', 'PostsController@index')->name('posts');
@@ -56,7 +69,7 @@ Route::group(['prefix' => 'admin','middleware' => 'auth'], function(){
         'as' => 'category.edit'
     ]);
 
-    
+
     Route::get('/category/delete/{id}',[
         'uses' => 'CategoriesController@destroy',
         'as' => 'category.delete'

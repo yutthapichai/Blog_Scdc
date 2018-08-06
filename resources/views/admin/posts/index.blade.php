@@ -11,14 +11,15 @@
                 <th width="40%">
                     Title
                 </th>
-                <th>    
+                <th>
                     Edit
                 </th>
-                <th>    
+                <th>
                     Trash
                 </th>
             </thead>
             <tbody>
+              @if($posts->count() > 0)
                 @foreach($posts as $post)
                     <tr>
                         <td>
@@ -34,7 +35,12 @@
                             <a href="{{route('post.delete', ['id' => $post->id])}}" class="btn btn-sm btn-danger">Delete</a>
                         </td>
                     </tr>
-                @endforeach
+                  @endforeach
+                @else
+                  <tr>
+                    <th colspan="4" class="text-center">No have posts</th>
+                  </tr>
+                @endif
             </tbody>
         </table>
     </div>
