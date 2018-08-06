@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Post;
+use App\Tag;
 use Session;
 class PostsController extends Controller
 {
@@ -31,7 +32,7 @@ class PostsController extends Controller
             Session::flash('info', 'You must have some categories befor attempting to careat a post');
             return redirect()->back();
         }
-        return view('admin.posts.create')->with('categories', $categories);
+        return view('admin.posts.create')->with('categories', $categories)->with('tags', Tag::all());
     }
 
     /**
@@ -47,7 +48,8 @@ class PostsController extends Controller
             'title' => 'required|max:255',
             'featured' => 'required|image',
             'content' => 'required',
-            'category_id' => 'required'
+            'category_id' => 'required',
+            'tags' => 'required'
         ]);
         $featured = $request->featured;
         $featured_new_name = time().$featured->getClientOriginalName();
@@ -60,6 +62,8 @@ class PostsController extends Controller
             'category_id' => $request->category_id,
             'slug' => str_slug($request->title)
         ]);
+        //Model Post's tags() the same loop for then insert
+        $post->tage()->attach($request->tags);
         Session::flash('success', 'Post create succesfully');
         return redirect()->back();
     }
@@ -139,16 +143,16 @@ class PostsController extends Controller
         return view('admin.posts.trashed')->with('posts', $posts);
     }
     // Delete true
-    public function kill($id) 
+    public function kill($id)
     {
         $post = Post::withTrashed()->where('id', $id)->first();
         $post->forceDelete();
         Session::flash('delte', 'Deleted permanently');
         return redirect()->back();
-        
+
     }
 
-    public function restore($id) 
+    public function restore($id)
     {
         $post = Post::withTrashed()->where('id', $id)->first();
         $post->restore();

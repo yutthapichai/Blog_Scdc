@@ -25,6 +25,15 @@
                         @endforeach
                     </select>
                 </div>
+                <div class="from-group mb-3">
+                  <label for="tags">Select tags</label>
+                    @foreach($tags as $tag)
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" name="tags[]" value="{{ $tag->id }}" id="{{ $tag->id }}">
+                        <label class="custom-control-label" for="{{ $tag->id }}">{{ $tag->tag }}</label>
+                      </div>
+                    @endforeach
+                </div>
                 <div class="form-group">
                     <lebel for="content">Content</lebel>
                     <textarea name="content" id="content" cols="5" rows="5" class="form-control"></textarea>
