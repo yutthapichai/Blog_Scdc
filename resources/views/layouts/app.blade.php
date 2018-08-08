@@ -106,6 +106,16 @@
                         <a class="list-group-item list-group-item-action list-group-item-dark"
                         href="{{route('tags')}}">
                         <i data-feather="bookmark"></i> All Tag</a>
+                        {{-- Table user pionter at colume yourself admin --}}
+                        @if(Auth::user()->admin)
+                        <a class="list-group-item list-group-item-action list-group-item-dark"
+                        href="{{route('user.create')}}">
+                        <i data-feather="user"></i> Create User</a>
+
+                        <a class="list-group-item list-group-item-action list-group-item-dark"
+                        href="{{route('users')}}">
+                        <i data-feather="users"></i> All Users</a>
+                        @endif
                     </div>
                 </div>
                 @else
