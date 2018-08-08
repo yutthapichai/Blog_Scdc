@@ -19,6 +19,7 @@
     <script src="https://unpkg.com/feather-icons"></script>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 </head>
 <body>
     <div id="app">
@@ -54,9 +55,20 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                  <a class="dropdown-item" href="{{ route('user.profile') }}">
-                                      My Profile
-                                  </a>
+
+                                    <a class="dropdown-item" href="{{ route('user.profile') }}">
+                                        My Profile
+                                    </a>
+
+                                    {{-- Model Auth Table user pionter at colume yourself admin --}}
+                                    @if(Auth::user()->admin)
+                                    <a class="dropdown-item" href="{{ route('user.create') }}">
+                                        Create user
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('users') }}">
+                                        All users
+                                    </a>
+                                    @endif
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -110,17 +122,6 @@
                         <a class="list-group-item list-group-item-action list-group-item-dark"
                         href="{{route('tags')}}">
                         <i data-feather="bookmark"></i> All Tag</a>
-
-                        {{-- Model Auth Table user pionter at colume yourself admin --}}
-                        @if(Auth::user()->admin)
-                        <a class="list-group-item list-group-item-action list-group-item-dark"
-                        href="{{route('user.create')}}">
-                        <i data-feather="user"></i> Create User</a>
-
-                        <a class="list-group-item list-group-item-action list-group-item-dark"
-                        href="{{route('users')}}">
-                        <i data-feather="users"></i> All Users</a>
-                        @endif
 
                     </div>
                 </div>

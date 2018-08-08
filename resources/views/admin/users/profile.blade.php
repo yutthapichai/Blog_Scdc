@@ -33,8 +33,8 @@
                     <lebel for="youtube">Youtube</lebel>
                     <input type="text" id="youtube" value="{{$user->profile->youtube}}" name="youtube" class="form-control">
                 </div>
-                <div class="form-control">
-                  <label for="about"></label>
+                <div class="form-group">
+                  <label for="about">About yourself</label>
                   <textarea name="about" id="about" rows="7" class="form-control">{{ $user->profile->about }}</textarea>
                 </div>
                 <div class="form-group mt-3">
