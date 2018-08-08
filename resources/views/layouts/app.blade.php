@@ -49,11 +49,15 @@
                             </li>
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                  <a class="dropdown-item" href="{{ route('user.profile') }}">
+                                      My Profile
+                                  </a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -106,7 +110,8 @@
                         <a class="list-group-item list-group-item-action list-group-item-dark"
                         href="{{route('tags')}}">
                         <i data-feather="bookmark"></i> All Tag</a>
-                        {{-- Table user pionter at colume yourself admin --}}
+
+                        {{-- Model Auth Table user pionter at colume yourself admin --}}
                         @if(Auth::user()->admin)
                         <a class="list-group-item list-group-item-action list-group-item-dark"
                         href="{{route('user.create')}}">
@@ -116,6 +121,7 @@
                         href="{{route('users')}}">
                         <i data-feather="users"></i> All Users</a>
                         @endif
+
                     </div>
                 </div>
                 @else
