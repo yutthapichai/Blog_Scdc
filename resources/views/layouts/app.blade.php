@@ -62,9 +62,14 @@
 
                                     {{-- Model Auth Table user pionter at colume yourself admin --}}
                                     @if(Auth::user()->admin)
+                                    <a class="dropdown-item" href="{{ route('settings') }}">
+                                        Settings
+                                    </a>
+
                                     <a class="dropdown-item" href="{{ route('user.create') }}">
                                         Create user
                                     </a>
+
                                     <a class="dropdown-item" href="{{ route('users') }}">
                                         All users
                                     </a>
@@ -89,7 +94,7 @@
         <div class="container-fluid ">
             <div class="row">
                 @if(Auth::check())
-                <div class="col-lg-3">
+                <div class="col-lg-2">
                     <div class="list-group mt-3">
                         <a href="{{route('home')}}"
                         class="list-group-item list-group-item-action list-group-item-dark">
@@ -130,7 +135,7 @@
 
                 </div>
                 @endif
-                <main class="col-lg-9">
+                <main class="col-lg-10">
                     @include('admin.includes.sessionerrors')
                     @yield('content')
                 </main>

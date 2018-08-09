@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'FrontEndController@index')->name('index');
+
+Route::get('/post/{slug}', 'FrontEndController@singlePost')->name('post.single');
 
 Auth::routes();
 
@@ -21,6 +21,12 @@ Auth::routes();
 Route::group(['prefix' => 'admin','middleware' => 'auth'], function(){
 
     Route::get('/home', 'HomeController@index')->name('home');
+
+    //Settings
+    Route::get('/settings', 'SettingsController@index')->name('settings');
+
+    Route::post('/setting/update', 'SettingsController@update')->name('setting.update');
+
     //User
     Route::get('/users', 'UsersController@index')->name('users');
 
