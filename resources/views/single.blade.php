@@ -2,7 +2,7 @@
 @section('content')
 <div class="stunning-header stunning-header-bg-lightviolet">
     <div class="stunning-header-content">
-        <h1 class="stunning-header-title">{{ $post->title }} 555</h1>
+        <h1 class="stunning-header-title">{{ $post->title }}</h1>
     </div>
 </div>
 <div class="container">
@@ -41,7 +41,7 @@
 
                             <span class="category">
                                 <i class="seoicon-tags"></i>
-                                <a href="#">{{ $post->category->name }}</a>
+                                <a href="{{ route('category.single',['id' => $post->category->id]) }}">{{ $post->category->name }}</a>
                             </span>
 
                         </div>
@@ -49,15 +49,18 @@
                         <div class="post__content-info">
 
                                 {!! $post->content !!}
-                            <div class="widget w-tags">
-                                <div class="tags-wrap">
-                                  @foreach($post->tags as $tag)
-                                    <a href="#" class="w-tags-item">{{ $tag->tag }}</a>
-                                  @endforeach
-                                </div>
-                            </div>
+
+
 
                         </div>
+                        <br>
+                    <div class="widget w-tags">
+                        <div class="tags-wrap">
+                          @foreach($post->tags as $tag)
+                            <a href="{{ route('tag.single',['id'=> $tag->id])}}" class="w-tags-item">{{ $tag->tag }}</a>
+                          @endforeach
+                        </div>
+                    </div>
                     </div>
 
                     <div class="socials">Share:
@@ -150,6 +153,8 @@
                             <span class="long-line"></span>
                         </div>
                     </div>
+
+                    @include('admin.includes.disqus')
                 </div>
 
                 <div class="row">
@@ -162,7 +167,7 @@
             <!-- End Post Details -->
 
             <!-- Sidebar-->
-
+            <br><br>
             <div class="col-lg-12">
                 <aside aria-label="sidebar" class="sidebar sidebar-right">
                     <div  class="widget w-tags">
@@ -175,15 +180,9 @@
                         </div>
 
                         <div class="tags-wrap">
-                            <a href="#" class="w-tags-item">SEO</a>
-                            <a href="#" class="w-tags-item">Advertising</a>
-                            <a href="#" class="w-tags-item">Business</a>
-                            <a href="#" class="w-tags-item">Optimization</a>
-                            <a href="#" class="w-tags-item">Digital Marketing</a>
-                            <a href="#" class="w-tags-item">Social</a>
-                            <a href="#" class="w-tags-item">Keyword</a>
-                            <a href="#" class="w-tags-item">Strategy</a>
-                            <a href="#" class="w-tags-item">Audience</a>
+                            @foreach($tags as $tag)
+                            <a href="{{ route('tag.single',['id'=> $tag->id])}}" class="w-tags-item">{{ $tag->tag }}</a>
+                            @endforeach
                         </div>
                     </div>
                 </aside>

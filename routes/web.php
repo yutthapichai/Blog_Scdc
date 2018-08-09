@@ -15,6 +15,20 @@ Route::get('/', 'FrontEndController@index')->name('index');
 
 Route::get('/post/{slug}', 'FrontEndController@singlePost')->name('post.single');
 
+Route::get('/category/{id}', 'FrontEndController@category')->name('category.single');
+
+Route::get('/tag/{id}', 'FrontEndController@tag')->name('tag.single');
+
+Route::get('/results', function(){
+    $posts = App\Post::where('title','like','%'. request('query'). '%')->get();
+
+    return view('results')->with('posts', $posts)
+                          ->with('title', 'Search results : ' . request('query'))
+                          ->with('settings', App\Setting::first())
+                          ->with('categories', App\Category::take(5)->get())
+                          ->with('query', request('query'));
+})->name('shearching');
+
 Auth::routes();
 
 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Setting;
 use App\Category;
 use App\Post;
+use App\Tag;
 class FrontEndController extends Controller
 {
     public function index()
@@ -34,6 +35,25 @@ class FrontEndController extends Controller
             ->with('settings', Setting::first())
             ->with('categories', Category::take(5)->get())
             ->with('next', Post::find($next_id))
-            ->with('prev', Post::find($pre_id));
+            ->with('prev', Post::find($pre_id))
+            ->with('tags', Tag::all());
+    }
+
+    public function tag($id)
+    {
+      $tag = Tag::find($id);
+      return view('tag')->with('tag', $tag)
+                             ->with('title', $tag->tag)
+                             ->with('settings', Setting::first())
+                             ->with('categories', Category::take(5)->get());
+    }
+
+    public function category($id)
+    {
+      $category = Category::find($id);
+      return view('category')->with('category', $category)
+                             ->with('title', $category->name)
+                             ->with('settings', Setting::first())
+                             ->with('categories', Category::take(5)->get());
     }
 }

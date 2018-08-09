@@ -1,15 +1,18 @@
-<header class="header" id="site-header">
+<header class="header" id="site-header" style="  background:
+    radial-gradient(circle at 1.98% 3%,#223a5e,transparent 100%),
+    radial-gradient(circle at 98.02% 98%,#223a5e,transparent 100%),
+    radial-gradient(circle at 50% 50%,#668cc2,#223a5e 100%);">
     <div class="container">
             <div class="header-content-wrapper">
                 <div class="logo">
                     <div class="logo-text">
-                        <div class="logo-title">{{ $settings->site_name }}</div>
+                        <div class="logo-title"><a style="color:white;" href="{{ route('index')}}">{{ $settings->site_name }}</a></div>
                     </div>
                 </div>
 
                 <nav id="primary-menu" class="primary-menu">
                     <a href='javascript:void(0)' id="menu-icon-trigger" class="menu-icon-trigger showhide">
-                        <span id="menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: hidden">
+                        <span id="menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: hidden;">
                             <svg width="1000px" height="1000px">
                                 <path id="pathD" d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800"></path>
                                 <path id="pathE" d="M 300 500 L 700 500"></path>
@@ -20,7 +23,7 @@
                     <ul class="primary-menu-menu" style="overflow: hidden;">
                       @foreach($categories as $category)
                         <li class="">
-                            <a href="">{{ $category->name}}</a>
+                            <a href="{{ route('category.single', ['id' => $category->id]) }}" style="color:white;">{{ $category->name}}</a>
                         </li>
                         @endforeach
                     </ul>
