@@ -31,4 +31,8 @@ class Post extends Model
     {
         return asset($featured);
     }
+    public function user()
+    {
+      return $this->belongsTo('App\User');
+    }
 }

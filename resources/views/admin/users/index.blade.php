@@ -27,7 +27,7 @@
                     <tr>
                         <td>
                           {{-- profile is function User model --}}
-                        <img src="{{ asset('$user->profile->avatar') }}" alt="{{$user->name}}" width="50px" style="bordeer-radius:20%">
+                        <img src="{{ asset($user->profile->avatar) }}" alt="{{$user->name}}" width="50px" style="bordeer-radius:20%">
                         </td>
                         <td>
                         {{$user->name}}

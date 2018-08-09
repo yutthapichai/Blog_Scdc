@@ -2,19 +2,30 @@
     <div class="container">
         <div class="row">
             <div class="info">
-                <div class="col-lg-6 col-lg-offset-3">
+                <div class="col-lg-12">
                     <div class="heading text-center">
                         <h3 class="heading-title" >{{ $settings->site_name }}</h3>
                         <div class="heading-line">
                             <span class="short-line"></span>
                             <span class="long-line"></span>
                         </div>
-                        <p class="heading-text">Qolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibham
-                            liber tempor cum soluta nobis eleifend option congue nihil uarta decima et quinta.
-                            Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl
-                            ut aliquip ex ea commodo consequat eleifend option nihil. Investigationes demonstraverunt
-                            lectores legere me lius quod ii legunt saepius parum claram.
+                        <p class="heading-text">The company main objective is to engage in all civil work construction and materials supply.<br>
+The years following the successful business of The Seaboard Group Co., Ltd. at Map Ta Phut, Rayong, Thailand, the management decided to expand construction business in neighboring country especially in Indochina.
+
+The first operation is in the Kingdom of Cambodia which has considerably high potential of development due to peaceful after general election in 1991.
+
+In order to start developing the country, basic infrastructures such as rehabilitation of road network, power supply, water supply and telecommunication are the most necessary.
+
+The Seaboard Group Co., Ltd. believe in it’s experience , teamwork and strong financial support that will help our neighboring country to develop their country.
+
+Concentration on the business since 1992, we have succeeded in many project especially as a local partner of Italian - Thai Development Public Co., Ltd. and Fisbach International Inc. for the rehabilitation of highway route No.4 from Phnom Penh to Kampong Som., the construction of C.P. ware house, Royal Thai Embassy at Phnom Penh, Technical building of Cambodia Samart, CPAC’s Ready mixed concrete plant in Phnom Penh & Siem Reap, reconstruction of school in Battambang, CPAC Monier roof tile plant, Rehab. National Rn #6 in Siem Reap(Subcontract from DAIHO) and others civil & building works.
+
+Furthermore we are the main supplier of aggregate and river- sand of the best quality which we extract from our own sources and contractor of transport ready mixed concrete for CPAC concrete.
+
+We have recently re-registered the Company with new name “THE Seaboard Cambodian Development Construction Co., Ltd.” due to our internal changing of Chare Holder structure where as all management and finance are continue from the previous company’s name.
                         </p>
+                        <p>The Seaboard Cambodian Development Construction Co., Ltd. was founded in 1992 by joint venture between The Seaboard Holding Co., Ltd.
+(subsidiary company of The Seaboard Group Co., Ltd.) and Mrs. SIN NARITH a Cambodian Partner.</p>
                     </div>
                 </div>
             </div>
