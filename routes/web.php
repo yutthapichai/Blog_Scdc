@@ -1,4 +1,14 @@
 <?php
+//use Newsletter;
+//use Session;
+Route::post('/subscribe', function(){
+  $email = request('email');
+  Newsletter::subscribe($email);
+  //Newsletter::unsubscribe('the.luggage@discworld.com');
+  //Newsletter::subscribe('rincewind@discworld.com', ['firstName'=>'Rince', 'lastName'=>'Wind']);
+  Session::flash('update', 'Successfully subscribed');
+  return redirect()->back();
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +23,7 @@
 
 Route::get('/', 'FrontEndController@index')->name('index');
 
-Route::get('/post/{slug}', 'FrontEndController@singlePost')->name('post.single');
+Route::get('/blog/{slug}', 'FrontEndController@singlePost')->name('post.single');
 
 Route::get('/category/{id}', 'FrontEndController@category')->name('category.single');
 

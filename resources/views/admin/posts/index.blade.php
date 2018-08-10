@@ -8,8 +8,11 @@
                 <th width="30%">
                     Image
                 </th>
-                <th width="40%">
+                <th width="30%">
                     Title
+                </th>
+                <th>
+                  Create by
                 </th>
                 <th>
                     Edit
@@ -29,6 +32,9 @@
                         {{$post->title}}
                         </td>
                         <td>
+                          {{ $post->user->name}}
+                        </td>
+                        <td>
                             <a href="{{route('post.edit', ['id' => $post->id])}}" class="btn btn-sm btn-info">Edit</a>
                         </td>
                         <td>
@@ -44,5 +50,8 @@
             </tbody>
         </table>
     </div>
+</div>
+<div class="">
+  {{ $posts->links() }}
 </div>
 @endsection

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>{{ $title }}</title>
-
+    <link rel="icon" type="img/png" href="{{ asset('scdc_logo.png')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app/css/fonts.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app/css/crumina-fonts.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app/css/normalize.css')}}">
@@ -38,7 +38,7 @@
 </head>
 
 
-<body class=" ">
+<body>
 
 <div class="content-wrapper">
   <header class="header">
@@ -66,6 +66,23 @@
                               <a href="{{ route('category.single', ['id' => $category->id]) }}">{{ $category->name}}</a>
                           </li>
                           @endforeach
+                          @if (Route::has('login'))
+                           @auth
+                           <li>
+                             <a href="{{ url('/admin/home') }}">Options</a>
+                           </li>
+                           @else
+                           <li>
+                              <a href="{{ route('login') }}">Login</a>
+                           </li>
+                           <li>
+                              <a href="{{ route('register') }}">Register</a>
+                            </li>
+                           @endauth
+                         @endif
+                         <li>
+                            <a href="{{ route('register') }}">About</a>
+                          </li>
                       </ul>
                   </nav>
                   <ul class="nav-add">

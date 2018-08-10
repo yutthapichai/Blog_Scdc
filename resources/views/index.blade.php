@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>{{ $title }}</title>
-
+    <link rel="icon" type="img/png" href="{{ asset('scdc_logo.png')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app/css/fonts.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app/css/crumina-fonts.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app/css/normalize.css')}}">
@@ -43,10 +43,10 @@
 <div class="content-wrapper">
     @include('admin.includes.header')
 
-    <div class="header-spacer"></div>
-
+    <div class="text-center" style="margin-top:5%;">@include('admin.includes.sessionerrors')</div>
     <div class="container">
         <div class="row">
+          @if($first_post != null)
             <div class="col-lg-2"></div>
             <div class="col-lg-8">
                 <article class="hentry post post-standard has-post-thumbnail sticky">
@@ -57,7 +57,7 @@
                             <a href="{{ $first_post->featured }}" class="link-image js-zoom-image">
                                 <i class="seoicon-zoom"></i>
                             </a>
-                            <a href="{{ route('post.single', ['slug' => $first_post->slug]) }}" class="link-post">
+                            <a href="{{ route('post.single', ['slug' => $first_post->id]) }}" class="link-post">
                                 <i class="seoicon-link-bold"></i>
                             </a>
                         </div>
@@ -67,7 +67,7 @@
                             <div class="post__content-info">
 
                                     <h2 class="post__title entry-title ">
-                                        <a href="{{ route('post.single', ['slug' => $first_post->slug]) }}">{{ $first_post->title }}</a>
+                                        <a href="{{ route('post.single', ['slug' => $first_post->id]) }}">{{ $first_post->title }}</a>
                                     </h2>
 
                                     <div class="post-additional-info">
@@ -84,12 +84,12 @@
 
                                         <span class="category">
                                             <i class="seoicon-tags"></i>
-                                            <a href="{{ route('category.single', ['id' => $first_post->category->id ])}}">{{ $first_post->category->name}}</a>
+                                            <a href="{{ route('tag.single', ['id' => $first_post->tags->first() ])}}">{{ $first_post->tags->first()->tag}}</a>
                                         </span>
 
-                                        <span class="post__comments">
-                                            <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i></a>
-                                            6
+                                        <span class="user">
+                                            <i class="fa fa-creative-commons" style="color:#999;" aria-hidden="true"></i>
+                                            {{ $first_post->user->name}}
                                         </span>
 
                                     </div>
@@ -99,10 +99,12 @@
                 </article>
             </div>
             <div class="col-lg-2"></div>
+            @endif
         </div>
 
         <div class="row">
             <div class="col-lg-6">
+              @if($second_post != null)
                 <article class="hentry post post-standard has-post-thumbnail sticky">
 
                         <div class="post-thumb">
@@ -111,7 +113,7 @@
                             <a href="{{ $second_post->featured }}" class="link-image js-zoom-image">
                                 <i class="seoicon-zoom"></i>
                             </a>
-                            <a href="{{ route('post.single', ['slug' => $second_post->slug]) }}" class="link-post">
+                            <a href="{{ route('post.single', ['slug' => $second_post->id]) }}" class="link-post">
                                 <i class="seoicon-link-bold"></i>
                             </a>
                         </div>
@@ -121,7 +123,7 @@
                             <div class="post__content-info">
 
                                     <h2 class="post__title entry-title ">
-                                        <a href="{{ route('post.single', ['slug' => $second_post->slug]) }}">{{ $second_post->title }}</a>
+                                        <a href="{{ route('post.single', ['slug' => $second_post->id]) }}">{{ $second_post->title }}</a>
                                     </h2>
 
                                     <div class="post-additional-info">
@@ -138,12 +140,12 @@
 
                                         <span class="category">
                                             <i class="seoicon-tags"></i>
-                                            <a href="{{ route('category.single', ['id' => $second_post->category->id ])}}">{{ $second_post->category->name }}</a>
+                                            <a href="{{ route('tag.single', ['id' => $second_post->tags->first()->id ])}}">{{ $second_post->tags->first()->tag }}</a>
                                         </span>
 
-                                        <span class="post__comments">
-                                            <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i></a>
-                                            6
+                                        <span class="user">
+                                            <i class="fa fa-creative-commons" style="color:#999;" aria-hidden="true"></i>
+                                            {{ $second_post->user->name}}
                                         </span>
 
                                     </div>
@@ -151,27 +153,26 @@
                         </div>
 
                 </article>
+              @endif
             </div>
             <div class="col-lg-6">
+              @if($three_post != null)
                 <article class="hentry post post-standard has-post-thumbnail sticky">
-
                         <div class="post-thumb">
                             <img src="{{ $three_post->featured }}" alt="{{ $three_post->title }}">
                             <div class="overlay"></div>
                             <a href="{{ $three_post->featured }}" class="link-image js-zoom-image">
                                 <i class="seoicon-zoom"></i>
                             </a>
-                            <a href="{{ route('post.single', ['slug' => $three_post->slug]) }}" class="link-post">
+                            <a href="{{ route('post.single', ['slug' => $three_post->id]) }}" class="link-post">
                                 <i class="seoicon-link-bold"></i>
                             </a>
                         </div>
-
                         <div class="post__content">
-
                             <div class="post__content-info">
 
                                     <h2 class="post__title entry-title ">
-                                        <a href="{{ route('post.single', ['slug' => $three_post->slug]) }}">{{ $three_post->title }}</a>
+                                        <a href="{{ route('post.single', ['slug' => $three_post->id]) }}">{{ $three_post->title }}</a>
                                     </h2>
 
                                     <div class="post-additional-info">
@@ -188,19 +189,19 @@
 
                                         <span class="category">
                                             <i class="seoicon-tags"></i>
-                                            <a href="{{ route('category.single',['id' => $three_post->category->id]) }}">{{ $three_post->category->name}}</a>
+                                            <a href="{{ route('tag.single',['id' => $three_post->tags->first()->id]) }}">{{ $three_post->tags->first()->tag}}</a>
                                         </span>
 
-                                        <span class="post__comments">
-                                            <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i></a>
-                                            6
+                                        <span class="user">
+                                            <i class="fa fa-creative-commons" style="color:#999;" aria-hidden="true"></i>
+                                            {{ $three_post->user->name}}
                                         </span>
 
                                     </div>
                             </div>
                         </div>
-
                 </article>
+                @endif
             </div>
         </div>
     </div>
@@ -231,7 +232,7 @@
                                     <div class="case-item__thumb">
                                         <img src="{{ $post->featured }}" alt="our case">
                                     </div>
-                                    <h6 class="case-item__title"><a href="{{ route('post.single', ['slug' => $post->slug]) }}">{{ $post->title }}</a></h6>
+                                    <h6 class="case-item__title"><a href="{{ route('post.single', ['slug' => $post->id]) }}">{{ $post->title }}</a></h6>
                                     <time class="published" datetime="2016-04-17 12:00:00">
                                         {{ $post->created_at->toFormattedDateString() }}
                                     </time>
@@ -266,9 +267,9 @@
                                     <div class="case-item__thumb">
                                         <img src="{{ $post2->featured }}" alt="our case">
                                     </div>
-                                    <h6 class="case-item__title"><a href="{{ route('post.single', ['slug' => $post2->slug]) }}">{{ $post2->title }}</a></h6>
+                                    <h6 class="case-item__title"><a href="{{ route('post.single', ['slug' => $post2->id]) }}">{{ $post2->title }}</a></h6>
                                     <time class="published" datetime="2016-04-17 12:00:00">
-                                        {{ $post->created_at->toFormattedDateString() }}
+                                        {{ $post2->created_at->toFormattedDateString() }}
                                     </time>
                                 </div>
                             </div>
@@ -301,9 +302,9 @@
                                     <div class="case-item__thumb">
                                         <img src="{{ $post3->featured }}" alt="our case">
                                     </div>
-                                    <h6 class="case-item__title"><a href="{{ route('post.single', ['slug' => $post3->slug]) }}">{{ $post3->title }}</a></h6>
+                                    <h6 class="case-item__title"><a href="{{ route('post.single', ['slug' => $post3->id]) }}">{{ $post3->title }}</a></h6>
                                     <time class="published" datetime="2016-04-17 12:00:00">
-                                        {{ $post->created_at->toFormattedDateString() }}
+                                        {{ $post3->created_at->toFormattedDateString() }}
                                     </time>
                                 </div>
                             </div>
@@ -329,9 +330,10 @@
                 <div class="subscribe scrollme">
                     <div class="col-lg-6 col-lg-offset-5 col-md-6 col-md-offset-5 col-sm-12 col-xs-12">
                         <h4 class="subscribe-title">Email Newsletters!</h4>
-                        <form class="subscribe-form" method="post" action="">
+                        <form class="subscribe-form" method="post" action="/subscribe">
+                          {{ csrf_field() }}
                             <input class="email input-standard-grey input-white" name="email" required="required" placeholder="Your Email Address" type="email">
-                            <button class="subscr-btn">subscribe
+                            <button class="subscr-btn" type="submit">subscribe
                                 <span class="semicircle--right"></span>
                             </button>
                         </form>

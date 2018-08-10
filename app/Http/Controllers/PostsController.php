@@ -10,6 +10,10 @@ use Session;
 use Auth;
 class PostsController extends Controller
 {
+    public function __construct()
+    {
+      $this->middleware('admin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +21,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return view('admin.posts.index')->with('posts', Post::all());
+        $posts = Post::paginate(100);
+        return view('admin.posts.index')->with('posts', $posts);
     }
 
     /**

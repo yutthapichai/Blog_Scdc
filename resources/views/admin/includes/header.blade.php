@@ -5,8 +5,10 @@
     <div class="container">
             <div class="header-content-wrapper">
                 <div class="logo">
-                    <div class="logo-text">
-                        <div class="logo-title"><a style="color:white;" href="{{ route('index')}}">{{ $settings->site_name }}</a></div>
+                    <div class="">
+                        <div class="">
+                          <img src="{{ asset('logo.png') }}" alt="logo">
+                        </div>
                     </div>
                 </div>
 
@@ -26,6 +28,24 @@
                             <a href="{{ route('category.single', ['id' => $category->id]) }}" style="color:white;">{{ $category->name}}</a>
                         </li>
                         @endforeach
+                        @if (Route::has('login'))
+                         @auth
+                         <li>
+                           <a href="{{ url('/admin/home') }}" style="color:white;">Options</a>
+
+                         </li>
+                         @else
+                         <li>
+                            <a href="{{ route('login') }}" style="color:white;">Login</a>
+                         </li>
+                         <li>
+                            <a href="{{ route('register') }}" style="color:white;">Register</a>
+                          </li>
+                         @endauth
+                       @endif
+                       <li>
+                          <a href="{{ route('register') }}" style="color:white;">About</a>
+                        </li>
                     </ul>
                 </nav>
                 <ul class="nav-add">

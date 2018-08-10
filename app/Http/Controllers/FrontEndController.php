@@ -11,21 +11,40 @@ class FrontEndController extends Controller
 {
     public function index()
     {
+      $id    = Category::select('id')->min('id');
+      $id_2  = Category::select('id')->max('id');
+      $id_3  = Category::whereNotIn('id',[$id,$id_2])->first();
+      $check_data = Post::all()->count();
+      if($check_data > 2){
+        $three = Post::orderBy('created_at', 'desc')->skip(2)->take(1)->get()->first();
+      }else{
+        $three = '';
+      }
+      if($check_data > 1){
+        $two = Post::orderBy('created_at', 'desc')->skip(1)->take(1)->get()->first();
+      }else{
+        $two = '';
+      }
+      if($check_data > 0){
+        $one = Post::orderBy('created_at', 'desc')->first();
+      }else{
+        $one = '';
+      }
       return view('index')
       ->with('title', Setting::first()->site_name)
       ->with('categories', Category::take(5)->get())
-      ->with('first_post', Post::orderBy('created_at', 'desc')->first())
-      ->with('second_post', Post::orderBy('created_at', 'desc')->skip(1)->take(1)->get()->first())
-      ->with('three_post', Post::orderBy('created_at', 'desc')->skip(2)->take(1)->get()->first())
-      ->with('career', Category::find(5))
-      ->with('tutor', Category::find(6))
-      ->with('lession', Category::find(2))
+      ->with('first_post', $one)
+      ->with('second_post', $two)
+      ->with('three_post', $three)
+      ->with('career', Category::find($id))
+      ->with('tutor', Category::find($id_3->id))
+      ->with('lession', Category::find($id_2))
       ->with('settings', Setting::first());
     }
 
     public function singlePost($slug)
     {
-      $post = Post::where('slug', $slug)->first();
+      $post = Post::where('id', $slug)->first();
 
       $next_id = Post::where('id', '>',$post->id)->min('id');
       $pre_id  = Post::where('id', '<', $post->id)->max('id');

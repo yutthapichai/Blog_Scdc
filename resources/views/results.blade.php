@@ -20,7 +20,7 @@
                           </div>
 
                             <h6 class="case-item__title">
-                              <a href="{{ route('post.single', ['slug' => $post->slug])}}">
+                              <a href="{{ route('post.single', ['slug' => $post->id])}}">
                                 {{ $post->title }}
                               </a>
                             </h6>

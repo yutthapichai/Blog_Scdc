@@ -20,6 +20,7 @@
                 <div class="form-group">
                     <lebel for="category">Select a Category</lebel>
                     <select name="category_id" id="category" class="form-control">
+                        <option value="" selected disabled>Please select category</option>
                         @foreach($categories as $category)
                             <option value="{{$category->id}}">{{$category->name}}</option>
                         @endforeach
@@ -36,7 +37,7 @@
                 </div>
                 <div class="form-group">
                     <lebel for="content">Content</lebel>
-                    <textarea name="content" id="content" cols="5" rows="5" class="form-control"></textarea>
+                    <textarea name="content" id="content" rows="10" class="form-control"></textarea>
                 </div>
                 <div class="form-group">
                     <div class="text-center">

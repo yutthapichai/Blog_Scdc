@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="icon" type="img/png" href="{{ asset('scdc_logo.png')}}">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -26,7 +26,7 @@
         <nav class="navbar navbar-expand-md navbar-dark bg-dark navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    Home
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -98,23 +98,27 @@
                     <div class="list-group mt-3">
                         <a href="{{route('home')}}"
                         class="list-group-item list-group-item-action list-group-item-dark">
-                        <i data-feather="home"></i> Home</a>
+                        <i data-feather="home"></i> Dashboard</a>
 
                         <a href="{{route('category.create')}}"
                         class="list-group-item list-group-item-action list-group-item-dark">
                         <i data-feather="aperture"></i> Create a category</a>
 
-                        <a href="{{route('post.create')}}"
-                        class="list-group-item list-group-item-action list-group-item-dark">
-                        <i data-feather="send"></i> Cteate a post</a>
-
                         <a class="list-group-item list-group-item-action list-group-item-dark"
                         href="{{route('tag.create')}}">
                         <i data-feather="tag"></i> Create Tag</a>
 
+                        <a href="{{route('post.create')}}"
+                        class="list-group-item list-group-item-action list-group-item-dark">
+                        <i data-feather="edit" class="text-info"></i> Create a post</a>
+
                         <a class="list-group-item list-group-item-action list-group-item-dark"
                         href="{{route('categories')}}">
                         <i data-feather="package"></i> All Category</a>
+
+                        <a class="list-group-item list-group-item-action list-group-item-dark"
+                        href="{{route('tags')}}">
+                        <i data-feather="bookmark"></i> All Tag</a>
 
                         <a class="list-group-item list-group-item-action list-group-item-dark"
                         href="{{route('posts')}}">
@@ -123,10 +127,6 @@
                         <a class="list-group-item list-group-item-action list-group-item-dark"
                         href="{{route('posts.trashed')}}">
                         <i data-feather="trash-2"></i> All trashed posts</a>
-
-                        <a class="list-group-item list-group-item-action list-group-item-dark"
-                        href="{{route('tags')}}">
-                        <i data-feather="bookmark"></i> All Tag</a>
 
                     </div>
                 </div>

@@ -22,7 +22,7 @@
                     <select name="category_id" id="category" class="form-control">
                         @foreach($categories as $category)
                             <option value="{{$category->id}}"
-                              {{{-- category is function of post model--}}} 
+                              {{{-- category is function of post model--}}}
                               @if($post->category->id == $category->id)
                                 selected
                               @endif

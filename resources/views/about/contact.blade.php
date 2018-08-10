@@ -6,16 +6,12 @@
     </div>
 </div>
 <div class="container">
-    <div class="medium-padding120">
+    <div class="row medium-padding120">
         <main class="main">
-          <div class="row">
-            <div class="col-lg-1">
-
-            </div>
-            <div class="col-lg-10">
+            <div class="col-lg-10 col-lg-offset-1">
                 <article class="hentry post post-standard-details">
 
-                    <div class="post-thumb col-lg-offset-1">
+                    <div class="post-thumb">
                         <img src="{{ $post->featured }}" alt="seo">
                     </div>
 
@@ -24,7 +20,7 @@
 
                         <div class="post-additional-info">
 
-                            <div class="post__author author vcard col-lg-offset-3">
+                            <div class="post__author author vcard">
                                 Posted by
 
                                 <div class="post__author-name fn">
@@ -51,11 +47,15 @@
                         </div>
 
                         <div class="post__content-info">
-                          <textarea rows="10">{!!$post->content!!}</textarea>
+
+                                {!! $post->content !!}
+
+
+
                         </div>
                         <br>
                     <div class="widget w-tags">
-                        <div class="tags-wrap" style="float:right">
+                        <div class="tags-wrap">
                           @foreach($post->tags as $tag)
                             <a href="{{ route('tag.single',['id'=> $tag->id])}}" class="w-tags-item">{{ $tag->tag }}</a>
                           @endforeach
@@ -100,7 +100,7 @@
 
                 <div class="pagination-arrow">
                   @if($prev)
-                  <a href="{{ route('post.single', ['slug' => $prev->id]) }}" class="btn-prev-wrap">
+                  <a href="{{ route('post.single', ['slug' => $prev->slug]) }}" class="btn-prev-wrap">
                     <svg class="btn-prev">
                         <use xlink:href="#arrow-left"></use>
                     </svg>
@@ -111,7 +111,7 @@
                   </a>
                   @endif
                   @if($next)
-                  <a href="{{ route('post.single', ['slug' => $next->id]) }}" class="btn-next-wrap">
+                  <a href="{{ route('post.single', ['slug' => $next->slug]) }}" class="btn-next-wrap">
                       <div class="btn-content">
                           <div class="btn-content-title">Next Post</div>
                           <p class="btn-content-subtitle">{{ $next->title }}</p>
@@ -138,11 +138,6 @@
 
             </div>
 
-            <div class="col-lg-1">
-
-            </div>
-          </div>
-
             <!-- End Post Details -->
 
             <!-- Sidebar-->
@@ -158,7 +153,7 @@
                             </div>
                         </div>
 
-                        <div class="tags-wrap col-lg-offset-2">
+                        <div class="tags-wrap">
                             @foreach($tags as $tag)
                             <a href="{{ route('tag.single',['id'=> $tag->id])}}" class="w-tags-item">{{ $tag->tag }}</a>
                             @endforeach
