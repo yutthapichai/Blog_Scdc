@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate(10);
+        $posts = Post::orderBy('created_at', 'desc')->paginate(10);
         return view('/home')
         ->with('post_count', Post::all()->count())
         ->with('trash_count', Post::onlyTrashed()->get()->count())

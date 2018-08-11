@@ -20,6 +20,7 @@ Route::post('/subscribe', function(){
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/about', 'AboutController@index')->name('about');
 
 Route::get('/', 'FrontEndController@index')->name('index');
 

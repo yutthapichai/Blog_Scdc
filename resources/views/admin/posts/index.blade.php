@@ -5,10 +5,10 @@
         <div class="card-body">
         <table class="table table-striped table-dark">
             <thead>
-                <th width="30%">
+                <th width="10%">
                     Image
                 </th>
-                <th width="30%">
+                <th width="40%">
                     Title
                 </th>
                 <th>

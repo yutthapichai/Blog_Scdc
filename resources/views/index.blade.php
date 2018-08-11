@@ -84,11 +84,11 @@
 
                                         <span class="category">
                                             <i class="seoicon-tags"></i>
-                                            <a href="{{ route('tag.single', ['id' => $first_post->tags->first() ])}}">{{ $first_post->tags->first()->tag}}</a>
+                                            <a href="{{ route('tag.single', ['id' => $first_post->tags->first()->id ])}}">{{ $first_post->tags->first()->tag}}</a>
                                         </span>
 
                                         <span class="user">
-                                            <i class="fa fa-creative-commons" style="color:#999;" aria-hidden="true"></i>
+                                            <i class="fa fa-edit" style="color:#999;" aria-hidden="true"></i>
                                             {{ $first_post->user->name}}
                                         </span>
 
@@ -144,7 +144,7 @@
                                         </span>
 
                                         <span class="user">
-                                            <i class="fa fa-creative-commons" style="color:#999;" aria-hidden="true"></i>
+                                            <i class="fa fa-edit" style="color:#999;" aria-hidden="true"></i>
                                             {{ $second_post->user->name}}
                                         </span>
 
@@ -193,7 +193,7 @@
                                         </span>
 
                                         <span class="user">
-                                            <i class="fa fa-creative-commons" style="color:#999;" aria-hidden="true"></i>
+                                            <i class="fa fa-edit" style="color:#999;" aria-hidden="true"></i>
                                             {{ $three_post->user->name}}
                                         </span>
 
@@ -240,7 +240,7 @@
                             </div>
                             @endforeach
                             @else
-                            <h3>.....No have post</h3>
+                            <h3>..No have post...</h3>
                             @endif
                         </div>
                     </div>
@@ -275,7 +275,7 @@
                             </div>
                             @endforeach
                             @else
-                            <h3>.....No have post</h3>
+                            <h3>..No have post...</h3>
                             @endif
                         </div>
                     </div>
@@ -405,7 +405,7 @@
         <div class="row">
             <div class="form_search-wrap">
                 <form method="GET" action="{{ route('shearching') }}">
-                    <input class="overlay_search-input" name="query" placeholder="Type and hit Enter..." type="text">
+                    <input class="overlay_search-input" name="query" placeholder="Type post and hit Enter..." type="text">
                     <a href="#" class="overlay_search-close">
                         <span></span>
                         <span></span>

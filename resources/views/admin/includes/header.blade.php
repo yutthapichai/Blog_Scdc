@@ -44,7 +44,7 @@
                          @endauth
                        @endif
                        <li>
-                          <a href="{{ route('register') }}" style="color:white;">About</a>
+                          <a href="{{ route('about') }}" style="color:white;">About</a>
                         </li>
                     </ul>
                 </nav>
